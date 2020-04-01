@@ -3,7 +3,7 @@
  ### Requirements:
  
  JDK and JRE  
- Eclipse IDE(preferable)
+ Eclipse IDE(preferable)                                                                                                                         
  Internet connection for the first time use 
  
  ### How to run?
