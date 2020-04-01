@@ -10,5 +10,5 @@
  
  Load the project from Eclipse IDE, go to main.java and run the program
  
- ###ATTENTION:
+ ### ATTENTION:                    
  First you need to have a database and configure that in src\main\java\hibernate.cfg
