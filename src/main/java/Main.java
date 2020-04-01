@@ -39,6 +39,7 @@ public class Main {
 		Session s2 = sf.openSession();
 		s2.beginTransaction();
 		s = s2.get(Student.class, 1);
+		s2.close();
 		System.out.println(s.getName());
 	}
 
