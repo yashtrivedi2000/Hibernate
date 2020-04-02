@@ -1,5 +1,8 @@
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashSet;
+import java.util.Set;
+
 import javax.persistence.Column;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
@@ -8,6 +11,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+
 import org.hibernate.annotations.CollectionId;
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Type;
@@ -19,20 +25,15 @@ public class Student {
 	private int student_id;
 	private String name;
 	private float CGPA;
-	@ElementCollection(fetch = FetchType.LAZY)
-	@JoinTable(name = "Address",
-		joinColumns = @JoinColumn(name="student_id")
-			)
-	@GenericGenerator(name="increment", strategy = "increment")
-	@CollectionId( columns = { @Column }, generator = "increment" , type = @Type(type = "int") )
-	private Collection<Address> listOfAddress=new ArrayList<Address>();
-	public Collection<Address> getListOfAddress() {
-		return listOfAddress;
-	}
-	public void setListOfAddress(Collection<Address> listOfAddress) {
-		this.listOfAddress = listOfAddress;
-	}
+	@OneToMany
+	private Set<Address> address=new HashSet();
 	
+	public Set<Address> getAddress() {
+		return address;
+	}
+	public void setAddress(Set<Address> address) {
+		this.address = address;
+	}
 	public int getStudent_id() {
 		return student_id;
 	}

@@ -1,7 +1,11 @@
-import javax.persistence.Embeddable;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 
-@Embeddable
+@Entity
 public class Address {
+	@Id@GeneratedValue
+	private int addcode;
 	private String city;
 	private String pincode;
 	private	String street;

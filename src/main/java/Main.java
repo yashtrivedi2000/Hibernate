@@ -1,5 +1,6 @@
-import java.util.ArrayList;
-import java.util.Collection;
+import java.util.HashSet;
+import java.util.Set;
+
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
@@ -18,19 +19,21 @@ public class Main {
 		address1.setCity("Rajkot");
 		address1.setPincode("360002");
 		address1.setStreet("Sorathiyawadi");
-		Address address2=new Address();
-		address2.setCity("Ahemdabad");
-		address2.setPincode("380002");
-		address2.setStreet("ISCON Mall");
-		Collection<Address> sets=new ArrayList<Address>();
-		sets.add(address1);
-		sets.add(address2);
-		s.setListOfAddress(sets);
+		
+		  Address address2=new Address(); address2.setCity("Ahemdabad");
+		  address2.setPincode("380002"); address2.setStreet("ISCON Mall");
+		  Set<Address> sets=new HashSet<Address>(); 
+		  sets.add(address1);
+		  sets.add(address2);
+		 
+		s.setAddress(sets);
 		
 		//Transaction
 		Session session = sf.openSession();
 		session.beginTransaction();
 		session.save(s);
+		session.save(address1);
+		session.save(address2);
 		session.getTransaction().commit();
 		session.close();
 
